@@ -67,9 +67,3 @@ https://jeka.by/ask/137/git-change-origin/
 - PROJECT_NAME.service - файл описания службы (демона). "PROJECT_NAME" необходимо изменить на имя создаваемого пакета;
 - pyproject.toml - файл описания проекта, как пакета;
 - README.me - описание пакета.
-
-This is a simple example package. You can use
-[GitHub-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
-to write your content.
-
-с именем разрабатываемого пакета (
