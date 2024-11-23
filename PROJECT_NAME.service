@@ -1,0 +1,12 @@
+[Unit]
+Description=<НАИМЕНОВАНИЕ ИС>-<ВИД ПРОДУКТА>-<PROJECT_NAME> daemon
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/opt/<НАИМЕНОВАНИЕ ИС>/<ВИД ПРОДУКТА>/<PROJECT_NAME>
+ExecStart=/opt/<НАИМЕНОВАНИЕ ИС>/<ВИД ПРОДУКТА>/<PROJECT_NAME>/venv/bin/python main_<PROJECT_NAME>.py
+
+[Install]
+WantedBy=multi-user.target
