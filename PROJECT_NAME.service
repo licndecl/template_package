@@ -3,8 +3,8 @@ Description=<НАИМЕНОВАНИЕ ИС>-<ВИД ПРОДУКТА>-<PROJECT_N
 After=network.target
 
 [Service]
-User=root
-Group=root
+User=<НАИМЕНОВАНИЕ ИС>
+Group=<НАИМЕНОВАНИЕ ИС>
 WorkingDirectory=/opt/<НАИМЕНОВАНИЕ ИС>/<ВИД ПРОДУКТА>/<PROJECT_NAME>
 ExecStart=/opt/<НАИМЕНОВАНИЕ ИС>/<ВИД ПРОДУКТА>/<PROJECT_NAME>/venv/bin/python main_<PROJECT_NAME>.py
 
