@@ -8,7 +8,7 @@ from <PROJECT_NAME>.config import config
 if __name__ == '__main__':
 
     <PROJECT_NAME>_LOG_FILENAME = config("<PROJECT_NAME>_log_filename", default="/var/log/<НАИМЕНОВАНИЕ ИС>/<PROJECT_NAME>/service_.log")
-    logging.basicConfig(filename=<PROJECT_NAME>_LOG_FILENAME_LOG_FILENAME, filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
+    logging.basicConfig(filename=<PROJECT_NAME>_LOG_FILENAME, filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
     logging.debug("log_file = " + <PROJECT_NAME>_LOG_FILENAME)
 
     """
