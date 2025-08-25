@@ -1,2 +1,2 @@
-sudo systemctl stop <PROJECT_NAME>
-sudo systemctl status <PROJECT_NAME>
+sudo systemctl stop <project_name>
+sudo systemctl status <project_name>

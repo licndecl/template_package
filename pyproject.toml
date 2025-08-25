@@ -6,12 +6,12 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "<PROJECT_NAME>"
-version = "0.0.1"
+name = "<project_name>"
+version = "<version>"
 authors = [
-  { name="<AUTHOR>", email="<AUTHOR@DOMAIN.NAME>" },
+  { name="<author>", email="<author_email>" },
 ]
-description = "A small example package"
+description = <description>
 readme = "README.md"
 requires-python = ">=3.12"
 classifiers = [
@@ -34,8 +34,8 @@ doc = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/licndecl/<ВИД ПРОДУКТА>_<PROJECT_NAME>"
-Documentation = "https://<ВИД ПРОДУКТА>_<PROJECT_NAME>.readthedocs.io/ru/latest"
-#Repository = "https://github.com/<AUTHOR>/spam.git"
-#Issues = "https://github.com/<AUTHOR>/spam/issues"
-#Changelog = "https://github.com/licndecl/<ВИД ПРОДУКТА>_<PROJECT_NAME>/CHANGELOG.md"
+Homepage = "https://github.com/licndecl/<product_type>_<project_name>"
+Documentation = "https://<product_type>_<project_name>.readthedocs.io/ru/latest"
+#Repository = "https://github.com/<author>/spam.git"
+#Issues = "https://github.com/<author>/spam/issues"
+#Changelog = "https://github.com/licndecl/<product_type>_<project_name>/CHANGELOG.md"

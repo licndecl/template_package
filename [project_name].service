@@ -1,0 +1,12 @@
+[Unit]
+Description=<owner_name>-<product_type>-<project_name> daemon (v.<version>)
+After=network.target
+
+[Service]
+User=<owner_name>
+Group=<owner_name>
+WorkingDirectory=/opt/<owner_name>/<product_type>/<project_name>
+ExecStart=/opt/<owner_name>/<product_type>/<project_name>/venv/bin/python main_<project_name>.py
+
+[Install]
+WantedBy=multi-user.target

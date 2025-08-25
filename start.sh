@@ -1,2 +1,2 @@
-sudo systemctl restart <PROJECT_NAME>
-sudo systemctl status <PROJECT_NAME>
+sudo systemctl restart <project_name>
+sudo systemctl status <project_name>
