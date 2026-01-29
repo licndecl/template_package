@@ -4,6 +4,9 @@ import uvicorn  # для web-сервисов на FastAPI
 
 from <project_name>.config import config
 
+# для сервисов обработки событий
+from <project_name>.event_consumer import EventConsumer
+
 <PROJECT_NAME>_LOG_FILENAME = config("<project_name>_log_filename", default="/var/log/<owner_name>/<project_name>/service_.log")
 logging.basicConfig(filename=<PROJECT_NAME>_LOG_FILENAME, filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 # если требуется отдельная настройка уровня логирования для некоторых компонентов, в данном случае для модуля suds
@@ -43,4 +46,27 @@ if __name__ == '__main__':
             logging.error("Прерывание цикла обработки ввиду ошибки. %s" % str(ex))
 
     print("Цикл обработки завершен.")
+    """
+
+    """
+    # шаблон реализации сервиса обработки событий
+    print("Запускается цикл получения сообщений от ... Для выхода из цикла нажмите Ctrl+C")
+    while( True ):
+        try:
+            logging.info('Создание объекта прослушивания...')
+
+            # начнем прослушивать входящую очередь
+            consumer = EventConsumer()
+            
+            logging.info('Запуск прослушивания...')
+            # непосредственно начало прослушивания
+            consumer.listen()
+
+        except KeyboardInterrupt:
+            print("Прерывание цикла отправки по требованию пользователя")
+            break
+        except Exception as ex:
+            logging.error("Прерывание цикла отправки ввиду ошибки. %s" % str(ex))
+
+    print("Цикл получения сообщений от ... завершен.")
     """
