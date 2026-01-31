@@ -22,7 +22,9 @@ classifiers = [
 license = {file = "LICENSE.md"}
 
 dependencies = [
-	"python-decouple >= 3.8",
+    "python-decouple >= 3.8",
+    "moslic_db >= 0.0.4",
+    "moslic_queue >= 0.0.5",
 ]
 
 [project.optional-dependencies]

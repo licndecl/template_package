@@ -30,8 +30,8 @@ MAPPING_VARIANTS = {
     "version": "0.0.1",
     # Наименование информационной системы (используется для именования корневого каталога установки, а также для указания владельца сервиса)
     "owner_name": "moslicense",
-    # Вид продукта (один из вариантов: api, web_services, services)
-    "product_type": "web_services",
+    # Вид продукта (один из вариантов: api, web_services, services, event_services)
+    "product_type": "event_services",
     # Автор (псевдоним автора проекта)
     "author": "nickname",
     # Почта автора
