@@ -8,7 +8,7 @@ from <project_name>.config import config
 from <project_name>.event_consumer import EventConsumer
 
 <PROJECT_NAME>_LOG_FILENAME = config("<project_name>_log_filename", default="/var/log/<owner_name>/<project_name>/service_.log")
-logging.basicConfig(filename=<PROJECT_NAME>_LOG_FILENAME, filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
+logging.basicConfig(filename=<PROJECT_NAME>_LOG_FILENAME, filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=config("log_level",logging.INFO))
 # если требуется отдельная настройка уровня логирования для некоторых компонентов, в данном случае для модуля suds
 # logging.getLogger('suds').setLevel(logging.INFO)
 logging.debug("log_file = " + <PROJECT_NAME>_LOG_FILENAME)
@@ -25,7 +25,7 @@ PORT = config("port", default=8091, cast=int)
 if __name__ == '__main__':
     """
     # шаблон реализации web-сервиса
-    uvicorn.run("<project_name>..api:app", host=HOST, port=PORT, reload=True, log_config=None)
+    uvicorn.run("<project_name>.api:app", host=HOST, port=PORT, reload=True, log_config=None)
     """
 
     """
@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     """
     # шаблон реализации сервиса обработки событий
-    print("Запускается цикл получения сообщений от ... Для выхода из цикла нажмите Ctrl+C")
+    print("Запускается цикл обработки сообщений из очереди. Для выхода из цикла нажмите Ctrl+C")
     while( True ):
         try:
             logging.info('Создание объекта прослушивания...')
@@ -63,10 +63,10 @@ if __name__ == '__main__':
             consumer.listen()
 
         except KeyboardInterrupt:
-            print("Прерывание цикла отправки по требованию пользователя")
+            print("Прерывание цикла обработки по требованию пользователя")
             break
         except Exception as ex:
-            logging.error("Прерывание цикла отправки ввиду ошибки. %s" % str(ex))
+            logging.error("Прерывание цикла обработки ввиду ошибки. %s" % str(ex))
 
-    print("Цикл получения сообщений от ... завершен.")
+    print("Цикл обработки сообщений из очереди завершен.")
     """

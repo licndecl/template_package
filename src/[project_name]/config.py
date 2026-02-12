@@ -7,4 +7,4 @@ if getattr(sys, 'frozen', False):
 elif __file__:
     # exe_dir = C:\WINDOWS\system32 for service
     exe_dir = os.path.dirname(os.path.abspath(__file__))
-config = AutoConfig(exe_dir)
+config_loader = AutoConfig(exe_dir)

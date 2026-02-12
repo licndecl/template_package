@@ -1,6 +1,7 @@
-from .config import config
+import json
 from typing import Optional
 
+from .config import config
 import logging
 
 from moslic_queue.simple_event_consumer import SimpleEventConsumer
@@ -30,15 +31,25 @@ class BaseConsumer(SimpleEventConsumer):
 
     def publish(self, json_params):
         exec_result = { "retcode": 0, "error": "" }
+
+        logger.debug('Отправляемое сообщение: %s',json_params)
         try:
             publisher = Publisher(PUBLISH_QUEUE_HOST, PUBLISH_QUEUE_PORT, PUBLISH_QUEUE_USERNAME, PUBLISH_QUEUE_PASSWORD, PUBLISH_QUEUE_VHOST)
-            publish_result = publisher.publish(PUBLISH_QUEUE_NAME, str(json_params))
+            publish_result = publisher.publish(PUBLISH_QUEUE_NAME, json.dumps(json_params))
+            logger.debug('Результаты отправки: %s',json_params)
             if "error" in publish_result:
                 logger.error(f"Ошибка при постановке сообщения в очередь: {publish_result["error"]}")
                 exec_result["retcode"] = -1
                 exec_result["error"] = publish_result["error"]
+            else:
+                logger.info('Сообщение поставлено в очередь')
+                if "data" in publish_result:
+                    exec_result["data"] = publish_result["data"]
         except Exception as ex:
+            logger.error(f"Ошибка при постановке сообщения в очередь: {ex}")
             exec_result["retcode"] = -1
             exec_result["error"] = str(ex)
+        logger.debug('publish() returns: %s',exec_result)
         return exec_result
+
 
